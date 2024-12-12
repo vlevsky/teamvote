@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <html>    
+        <a class="button" href="aaaindex.html">
+        <button class="button">Go Home</button>
+        </a> 
+     </html>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+        import { collection, addDoc, getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCKp_aZ_J0gbswoUEjFi8ECmFpRLf6Qn3M",
+            authDomain: "teamvote-d1279.firebaseapp.com",
+            projectId: "teamvote-d1279",
+            storageBucket: "teamvote-d1279.firebasestorage.app",
+            messagingSenderId: "136499561420",
+            appId: "1:136499561420:web:66d1e6b36b796214a3d369",
+            measurementId: "G-G2BQPPZCGR"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        const db = getFirestore(app);
+
+        const teams = [
+            "arizona_cardinals", 
+            "atlanta_falcons", 
+            "baltimore_ravens", 
+            "buffalo_bills", 
+            "carolina_panthers", 
+            "chicago_bears", 
+            "cincinnati_bengals", 
+            "cleveland_browns", 
+            "dallas_cowboys", 
+            "denver_broncos", 
+            "detroit_lions", 
+            "green_bay_packers", 
+            "houston_texans", 
+            "indianapolis_colts", 
+            "jacksonville_jaguars", 
+            "kansas_city_chiefs", 
+            "las_vegas_raiders", 
+            "los_angeles_chargers", 
+            "los_angeles_rams", 
+            "miami_dolphins", 
+            "minnesota_vikings", 
+            "new_england_patriots", 
+            "new_orleans_saints", 
+            "new_york_giants", 
+            "new_york_jets", 
+            "philadelphia_eagles", 
+            "Pittsburgh_steelers", 
+            "san_francisco_49ers", 
+            "seattle_seahawks", 
+            "tampa_bay_buccaneers", 
+            "tennessee_titans", 
+            "washington_commanders"
+
+        ];
+        const votes = {};
+
+        const docRef = doc(db, "teams", "nfl");
+        const docSnap = await getDoc(docRef);
+        const docData = docSnap.data();
+        for (const team of teams){
+            if (docData && team in docData) {
+                votes[team] = docData[team];
+                console.log(team + " Count: " + votes[team]);
+            } else {
+                votes[team] = 0;
+            }
+        }
+        // sort teams by votes
+        for (const team of teams){
+            const counter = document.createElement("p");
+            function addVote() {
+                votes[team]++;
+                setDoc(docRef, { [team]: votes[team] }, { merge: true });
+                counter.innerText = "Votes: " + votes[team];
+            }
+            counter.innerText = "Votes: " + votes[team];                                
+            const button = document.createElement("button");
+            button.addEventListener("click", addVote);
+            const image = document.createElement("img");
+            image.src = team + ".png";
+            image.width = "175";
+            image.height = "125";
+            button.appendChild(image);
+            button.appendChild(counter);
+            document.body.appendChild(button);
+        }
+        
+    </script>
+
+</body>
+
+</html>

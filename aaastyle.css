@@ -1,0 +1,18 @@
+.buttons {
+    background-color: hsl(204, 70%, 53%);
+    color: rgb(4, 15, 82);
+    font-size: 30px;
+    padding: 15px 30px;
+    border: blue;
+    border-radius: 8px;
+  }
+  
+  .buttons:hover {
+    background-color: #2980b9;
+    font-weight: bolder;
+  }
+
+  .title {
+    color: blue;
+    font-size: 30px;
+  }
