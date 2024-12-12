@@ -84,7 +84,7 @@
             } else {
                 votes[team] = 0;
             }
-        }
+        } 
         // sort teams by votes
         for (const team of teams){
             const counter = document.createElement("p");
@@ -97,7 +97,7 @@
             const button = document.createElement("button");
             button.addEventListener("click", addVote);
             const image = document.createElement("img");
-            image.src = "images/" + team + ".png";
+            image.src = "images/nfl/" + team + ".png";
             image.width = "175";
             image.height = "125";
             button.appendChild(image);
