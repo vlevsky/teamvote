@@ -11,6 +11,7 @@
         <button class="button">Go Home</button>
         </a> 
      </html>
+   
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
@@ -38,43 +39,41 @@
         const db = getFirestore(app);
 
         const teams = [
-            "arizona_cardinals", 
-            "atlanta_falcons", 
-            "baltimore_ravens", 
-            "buffalo_bills", 
-            "carolina_panthers", 
-            "chicago_bears", 
-            "cincinnati_bengals", 
-            "cleveland_browns", 
-            "dallas_cowboys", 
-            "denver_broncos", 
-            "detroit_lions", 
-            "green_bay_packers", 
-            "houston_texans", 
-            "indianapolis_colts", 
-            "jacksonville_jaguars", 
-            "kansas_city_chiefs", 
-            "las_vegas_raiders", 
-            "los_angeles_chargers", 
-            "los_angeles_rams", 
-            "miami_dolphins", 
-            "minnesota_vikings", 
-            "new_england_patriots", 
-            "new_orleans_saints", 
-            "new_york_giants", 
-            "new_york_jets", 
-            "philadelphia_eagles", 
-            "Pittsburgh_steelers", 
-            "san_francisco_49ers", 
-            "seattle_seahawks", 
-            "tampa_bay_buccaneers", 
-            "tennessee_titans", 
-            "washington_commanders"
+            "arizona_diamondbacks",
+            "athletics",
+            "atlanta_braves",
+            "baltimore_orioles",
+            "boston_red_sox",
+            "chicago_white_sox",
+            "chicago_cubs",
+            "cincinnati_reds",
+            "cleveland_guardians",
+            "colorado_rockies",
+            "detroit_tigers",
+            "houston_astros",
+            "kansas_city_royals",
+            "los_angeles_angels",
+            "los_angeles_dodgers",
+            "miami_marlins",
+            "milwaukee_brewers",
+            "minnesota_twins",
+            "new_york_mets",
+            "new_york_yankees",
+            "philadelphia_phillies",
+            "pittsburgh_pirates",
+            "san_diego_padres",
+            "san_francisco_giants",
+            "seattle_mariners",
+            "st_louis_cardinals",
+            "tampa_bay_rays",
+            "texas_rangers",
+            "toronto_blue_jays",
+            "washington_nationals"
 
         ];
         const votes = {};
 
-        const docRef = doc(db, "teams", "nfl");
+        const docRef = doc(db, "teams", "mlb");
         const docSnap = await getDoc(docRef);
         const docData = docSnap.data();
         for (const team of teams){
@@ -84,7 +83,7 @@
             } else {
                 votes[team] = 0;
             }
-        } 
+        }
         // sort teams by votes
         for (const team of teams){
             const counter = document.createElement("p");
@@ -97,7 +96,7 @@
             const button = document.createElement("button");
             button.addEventListener("click", addVote);
             const image = document.createElement("img");
-            image.src = "images/nfl/" + team + ".png";
+            image.src = "images/mlb/" + team + ".png";
             image.width = "175";
             image.height = "125";
             button.appendChild(image);
