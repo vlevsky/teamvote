@@ -1,18 +1,42 @@
-.buttons {
-    background-color: hsl(204, 70%, 53%);
-    color: rgb(4, 15, 82);
-    font-size: 30px;
-    padding: 15px 30px;
-    border: blue;
-    border-radius: 8px;
-  }
-  
-  .buttons:hover {
-    background-color: #2980b9;
-    font-weight: bolder;
-  }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
 
-  .title {
-    color: blue;
-    font-size: 30px;
+h1.title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+a.button {
+  margin: 10px;
+}
+
+button.button {
+  background-color: #007BFF;
+  color: white;
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+button.button:hover {
+  background-color: #0056b3;
+}
+
+  
+  button.button {
+      font-size: 1rem;
+      padding: 12px 25px;
   }
+}
