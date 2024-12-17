@@ -39,42 +39,23 @@
         const db = getFirestore(app);
 
         const teams = [
-            "arizona_diamondbacks",
-            "athletics",
-            "atlanta_braves",
-            "baltimore_orioles",
-            "boston_red_sox",
-            "chicago_white_sox",
-            "chicago_cubs",
-            "cincinnati_reds",
-            "cleveland_guardians",
-            "colorado_rockies",
-            "detroit_tigers",
-            "houston_astros",
-            "kansas_city_royals",
-            "los_angeles_angels",
-            "los_angeles_dodgers",
-            "miami_marlins",
-            "milwaukee_brewers",
-            "minnesota_twins",
-            "new_york_mets",
-            "new_york_yankees",
-            "philadelphia_phillies",
-            "pittsburgh_pirates",
-            "san_diego_padres",
-            "san_francisco_giants",
-            "seattle_mariners",
-            "seattle_mariners",
-            "st_louis_cardinals",
-            "tampa_bay_rays",
-            "texas_rangers",
-            "toronto_blue_jays",
-            "washington_nationals"
-
+            "atlanta_dream",
+            "chicago_sky",
+            "connecticut_sun",
+            "dallas_wings",
+            "golden_state_valkyries",
+            "indiana_fever",
+            "las_vegas_aces",
+            "los_angeles_sparks",
+            "minnesota_links",
+            "new_york_liberty",
+            "phoenix_mercury",
+            "seattle_storm",
+            "washington_mystics"
         ];
         const votes = {};
 
-        const docRef = doc(db, "teams", "mlb");
+        const docRef = doc(db, "teams", "wnba");
         const docSnap = await getDoc(docRef);
         const docData = docSnap.data();
         for (const team of teams){
@@ -97,7 +78,7 @@
             const button = document.createElement("button");
             button.addEventListener("click", addVote);
             const image = document.createElement("img");
-            image.src = "images/mlb/" + team + ".png";
+            image.src = "images/wnba/" + team + ".png";
             image.width = "175";
             image.height = "125";
             button.appendChild(image);
