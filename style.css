@@ -2,8 +2,6 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #00bcd4, #4caf50);
-  height: 100px;
 }
 
 h1.title {
@@ -33,5 +31,6 @@ button.button {
 }
 
 .home-page{
-
+  background: linear-gradient(135deg, #00bcd4, #4caf50);
+  height: 100px;
 }
