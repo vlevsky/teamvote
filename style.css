@@ -23,7 +23,7 @@ button.button {
 button.button:hover {
   background-color: #ffffff;
   color: #003cff;
-  font-size: 27.5px;
+  font-size: 20px;
 }
 
 button.button {
