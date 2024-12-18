@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+<html>
+
+<head>
+    <link rel="icon" href="images/favicons/marinm_favicon.jpg" type="image/jpg">
+</head>
+
+<body>
+    <html>    
+        <a class="button" href="index.html">
+        <button class="button">Go Home</button>
+        </a> 
+     </html>
+   
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+        import { collection, addDoc, getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCKp_aZ_J0gbswoUEjFi8ECmFpRLf6Qn3M",
+            authDomain: "teamvote-d1279.firebaseapp.com",
+            projectId: "teamvote-d1279",
+            storageBucket: "teamvote-d1279.firebasestorage.app",
+            messagingSenderId: "136499561420",
+            appId: "1:136499561420:web:66d1e6b36b796214a3d369",
+            measurementId: "G-G2BQPPZCGR"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        const db = getFirestore(app);
+
+        const teams = [
+            "archie_williams",
+            "branson",
+            "marin_academy",
+            "marin_catholic",
+            "novato",
+            "redwood",
+            "san_domenico",
+            "san_marin",
+            "san_rafael",
+            "tam",
+            "terra_linda",
+        ];
+        const votes = {};
+
+        const docRef = doc(db, "teams", "wnba");
+        const docSnap = await getDoc(docRef);
+        const docData = docSnap.data();
+        for (const team of teams){
+            if (docData && team in docData) {
+                votes[team] = docData[team];
+                console.log(team + " Count: " + votes[team]);
+            } else {
+                votes[team] = 0;
+            }
+        }
+        // sort teams by votes
+        for (const team of teams){
+            const counter = document.createElement("p");
+            function addVote() {
+                votes[team]++;
+                setDoc(docRef, { [team]: votes[team] }, { merge: true });
+                counter.innerText = "Votes: " + votes[team];
+            }
+            counter.innerText = "Votes: " + votes[team];                                
+            const button = document.createElement("button");
+            button.addEventListener("click", addVote);
+            const image = document.createElement("img");
+            image.src = "images/marin_high_schools/" + team + ".jpg";
+            image.width = "175";
+            image.height = "125";
+            button.appendChild(image);
+            button.appendChild(counter);
+            document.body.appendChild(button);
+        }
+        
+    </script>
+
+</body>
+
+</html>
