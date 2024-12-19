@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <link rel="icon" href="images/favicons/marinm_favicon.jpg" type="image/jpg">
+    <link rel="icon" href="images/favicons/ufl_favicon.webp" type="image/jpg">
 </head>
 
 <body>
@@ -12,7 +12,6 @@
         <button class="button">Go Home</button>
         </a> 
      </html>
-   
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
@@ -40,21 +39,19 @@
         const db = getFirestore(app);
 
         const teams = [
-            "archie_williams",
-            "branson",
-            "marin_academy",
-            "marin_catholic",
-            "novato",
-            "redwood",
-            "san_domenico",
-            "san_marin",
-            "san_rafael",
-            "tam",
-            "terra_linda",
+            "arlington_renegades",
+            "birmingham_stallions",
+            "dc_defenders",
+            "houston_roughnecks",
+            "memphis_snowboats",
+            "michigan_panthers",
+            "san_antonio_brahmas",
+            "st_louis_battlehawks",
+
         ];
         const votes = {};
 
-        const docRef = doc(db, "teams", "wnba");
+        const docRef = doc(db, "teams", "ufl");
         const docSnap = await getDoc(docRef);
         const docData = docSnap.data();
         for (const team of teams){
@@ -64,7 +61,7 @@
             } else {
                 votes[team] = 0;
             }
-        }
+        } 
         // sort teams by votes
         for (const team of teams){
             const counter = document.createElement("p");
@@ -77,7 +74,7 @@
             const button = document.createElement("button");
             button.addEventListener("click", addVote);
             const image = document.createElement("img");
-            image.src = "images/marin_high_schools/" + team + ".jpg";
+            image.src = "images/ufl/" + team + ".webp";
             image.width = "175";
             image.height = "125";
             button.appendChild(image);
